@@ -155,7 +155,7 @@ def generate_pdf(text: str) -> bytes:
     c = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter
     max_width = width - 2 * margin
-
+ 
     # Calcular ancho aproximado de caracteres en puntos
     avg_char_width = font_size * 0.6
     max_chars_per_line = int(max_width / avg_char_width)

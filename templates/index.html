@@ -40,7 +40,7 @@
                     <label class="form-label"><strong>Resultados del Análisis:</strong></label>
                     <textarea class="form-control mb-3" rows="10" readonly id="result-text">{{ extracted_data or error }}</textarea>
                     {% if extracted_data %}
-
+ 
                     <div class="mt-2">
                         <a href="{{ url_for('crear_pdf') }}" class="btn btn-success">Exportar a PDF</a>
                         <a href="{{ url_for('crear_word') }}" class="btn btn-danger">Exportar a DOCX</a>
