@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonimizador de datos personaless con IA</title>
+    <title>Anonimizador de datos personales con IA</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-color: #f8f9fa; }
@@ -17,7 +18,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header text-center">
-                <h2>🤖 Extractor de Datos Personales con IA</h2>
+                <h2>🤖 Anonimizador de datos personales con IA</h2>
             </div>
             <div class="card-body">
                 <form action="{{ url_for('extraer_datos') }}" method="post" enctype="multipart/form-data" id="upload-form" class="mb-3">
@@ -39,18 +40,24 @@
                     <label class="form-label"><strong>Resultados del Análisis:</strong></label>
                     <textarea class="form-control mb-3" rows="10" readonly id="result-text">{{ extracted_data or error }}</textarea>
                     {% if extracted_data %}
-                    <form action="{{ url_for('crear_pdf') }}" method="post" class="d-inline">
-                        <input type="hidden" name="anon_text" value="{{ extracted_data|tojson|safe }}">
+
+                    <div class="mt-2">
+                        <a href="{{ url_for('crear_pdf') }}" class="btn btn-success">Exportar a PDF</a>
+                        <a href="{{ url_for('crear_word') }}" class="btn btn-danger">Exportar a DOCX</a>
+                        <a href="{{ url_for('crear_txt') }}" class="btn btn-primary">Exportar a TXT</a>
+                    </div>
+                    <!-- <form action="{{ url_for('crear_pdf') }}" method="post" class="d-inline">
+                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
                         <button class="btn btn-danger mb-1">Crear PDF</button>
                     </form>
                     <form action="{{ url_for('crear_word') }}" method="post" class="d-inline">
-                        <input type="hidden" name="anon_text" value="{{ extracted_data|tojson|safe }}">
+                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
                         <button class="btn btn-primary mb-1">Crear Word</button>
                     </form>
                     <form action="{{ url_for('crear_txt') }}" method="post" class="d-inline">
-                        <input type="hidden" name="anon_text" value="{{ extracted_data|tojson|safe }}">
+                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
                         <button class="btn btn-success mb-1">Crear TXT</button>
-                    </form>
+                    </form> -->
                     {% endif %}
                 </div>
                 {% endif %}
