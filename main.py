@@ -4,7 +4,7 @@ from reportlab.pdfgen import canvas
 import tempfile
 import os
 from PyPDF2 import PdfReader
-from fpdf import FPDF
+#from fpdf import FPDF
 from docx import Document
 import json
 import re
@@ -17,7 +17,7 @@ import tkinter as tk
 from reportlab.lib.pagesizes import letter
 
 app = Flask(__name__)
-app.secret_key = os.getenv('FLASK_SECRET_KEY', 'esta_seria_una_clave_segura')
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'esta_es_una_clave_segura')
 
 # Configura el cliente OpenAI para LM Studio local
 client = openai.OpenAI(
@@ -155,7 +155,7 @@ def generate_pdf(text: str) -> bytes:
     c = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter
     max_width = width - 2 * margin
- 
+
     # Calcular ancho aproximado de caracteres en puntos
     avg_char_width = font_size * 0.6
     max_chars_per_line = int(max_width / avg_char_width)
@@ -201,56 +201,11 @@ def generate_docx(text: str) -> bytes:
     buf.close()
     return data
 
-
-# @app.route("/crear_pdf", methods=["POST"])
-# def crear_pdf():
-#     #anon_text = obtener_texto(request)
-#     contenido = obtener_texto(request)
-#     #contenido = quitar_think_tags(anon_text)
-#     print("Contenido a crear PDF:", contenido)  # Para depuración
-
-#     pdf = FPDF()
-#     pdf.add_page()
-#     pdf.set_auto_page_break(auto=True, margin=15)
-#     pdf.set_font("Arial", size=12)
-#     for linea in contenido.splitlines():
-#         # multi_cell maneja líneas largas y salto de línea
-#         pdf.multi_cell(0, 10, linea)
-#     temp_pdf = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
-#     pdf.output(temp_pdf.name)
-#     temp_pdf.flush()
-#     return send_file(temp_pdf.name, as_attachment=True, download_name="anonimizado.pdf")
-
-# @app.route("/crear_word", methods=["POST", "GET"])
-# def crear_word():
-#     contenido = obtener_texto(request)
-    
-#     #contenido = quitar_think_tags(anon_text)
-#     doc = Document()
-#     for linea in contenido.splitlines():
-#         doc.add_paragraph(linea)
-#     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".docx")
-#     doc.save(temp_file.name)
-#     temp_file.flush()
-#     return send_file(temp_file.name, as_attachment=True, download_name="anonimizado.docx")
-
-# @app.route("/crear_txt", methods=["POST", "GET"])
-# def crear_txt():
-#     print("Creando archivo TXT...")
-#     contenido = obtener_texto(request)
-#     print("Contenido a crear TXT:", contenido)  # Para depuración
-#     #contenido = quitar_think_tags(anon_text)
-#     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".txt", mode="w", encoding="utf-8")
-#     temp_file.write(contenido)
-#     temp_file.flush()
-#     temp_file.close()
-#     return send_file(temp_file.name, as_attachment=True, download_name="anonimizado.txt")
-
 def open_browser():
     # Pequeña espera para que Flask arranque
     time.sleep(1)
     webbrowser.open('http://127.0.0.1:8000')
-"""
+
 def start_flask():
     # Arranca Flask en este hilo
     app.run(host='0.0.0.0', port=8000, debug=False)
@@ -271,19 +226,14 @@ if __name__ == '__main__':
     tk.Label(root, text="Servidor en localhost:8000").pack(pady=10)
     tk.Button(root, text="Cerrar app", command=lambda: sys.exit(0)).pack()
     root.mainloop()
+
 """
-# if getattr(sys, 'frozen', False):
-#     # Aunque _MEIPASS no exista en los stubs, en runtime PyInstaller lo crea
-#     base_path = getattr(sys, '_MEIPASS', os.path.abspath('.'))
-# else:
-#     base_path = os.path.abspath('.')
-
-
 if __name__ == '__main__':
     # Lanza el thread que abrirá el navegador
     threading.Thread(target=open_browser, daemon=True).start()
     # Arranca el servidor Flask (debug=False para producción)
     app.run(host='0.0.0.0', port=8000, debug=True)
+"""
 
 # Si se utiliza un entorno virtual en desarrollo, para activarlo una vez creado:
     # Windows: venv\Scripts\activate
