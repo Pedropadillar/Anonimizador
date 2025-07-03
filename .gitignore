@@ -55,14 +55,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
-
 # Distribution / packaging
 .Python
 develop-eggs/
 downloads/
 eggs/
+build/
 .eggs/
 lib/
 lib64/
