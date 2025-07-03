@@ -105,10 +105,17 @@ El directorio build/ debe estar en la misma carpeta que dist/
 
 
 ├── main.py           # Script principal de Flask
+
 ├── requirements.txt  # Dependencias del proyecto
+
 ├── templates/        # Carpeta con index.html
+
 │   └── index.html    # Plantilla de subida y descarga
+
 ├── uploads/          # Carpeta temporal para archivos subidos
+
+├── dist/main         # Carpeta con el ejecutable main.exe para Windows
+
 └── README.md         # Documentación del proyecto
 
 ---
