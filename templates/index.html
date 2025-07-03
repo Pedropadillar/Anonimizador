@@ -46,18 +46,7 @@
                         <a href="{{ url_for('crear_word') }}" class="btn btn-danger">Exportar a DOCX</a>
                         <a href="{{ url_for('crear_txt') }}" class="btn btn-primary">Exportar a TXT</a>
                     </div>
-                    <!-- <form action="{{ url_for('crear_pdf') }}" method="post" class="d-inline">
-                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
-                        <button class="btn btn-danger mb-1">Crear PDF</button>
-                    </form>
-                    <form action="{{ url_for('crear_word') }}" method="post" class="d-inline">
-                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
-                        <button class="btn btn-primary mb-1">Crear Word</button>
-                    </form>
-                    <form action="{{ url_for('crear_txt') }}" method="post" class="d-inline">
-                        <textarea name="anon_text" hidden>{{ extracted_data }}</textarea>
-                        <button class="btn btn-success mb-1">Crear TXT</button>
-                    </form> -->
+
                     {% endif %}
                 </div>
                 {% endif %}
@@ -76,6 +65,11 @@
             txt.textContent = 'Procesando...';
             spinner.style.display = 'inline-block';
             btn.disabled = true;
+            // Limpiar el textarea de resultados si existe
+            const resultText = document.getElementById('result-text');
+            if (resultText) {
+                resultText.value = '';
+            }
         });
     </script>
 </body>

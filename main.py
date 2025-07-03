@@ -4,7 +4,6 @@ from reportlab.pdfgen import canvas
 import tempfile
 import os
 from PyPDF2 import PdfReader
-#from fpdf import FPDF
 from docx import Document
 import json
 import re

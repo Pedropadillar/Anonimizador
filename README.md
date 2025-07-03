@@ -86,6 +86,7 @@ pyinstaller --onefile main.py --add-data "templates;templates" --windowed --icon
 * `--icon=icono.ico` añade un icono al `.exe`.
 
 El directorio build/ debe estar en la misma carpeta que dist/
+
 ---
 
 ## Uso del ejecutable `.exe`
